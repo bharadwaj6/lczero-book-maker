@@ -31,13 +31,14 @@ def move_to_polyglot_int(board, move):
 def make_entry(board, move, weight=1, learn=0):
     key = chess.polyglot.zobrist_hash(board)
     raw_move = move_to_polyglot_int(board, move)
-    return chess.polyglot.Entry(key=key, raw_move=raw_move, weight=weight, learn=learn)
+    return chess.polyglot.Entry(key=key, raw_move=raw_move, weight=weight, learn=learn, move=move)
 
 
 def write_polyglot_bin(f, entries):
     entries = sorted(entries, key=lambda entry: entry.key)
     for entry in entries:
-        f.write(chess.polyglot.ENTRY_STRUCT.pack(*entry))
+        values = [val for key, val in entry._asdict().items() if key != 'move']
+        f.write(chess.polyglot.ENTRY_STRUCT.pack(*values))
 
 
 class LeelaInterface:
