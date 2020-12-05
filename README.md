@@ -3,12 +3,12 @@
 A tool for creating a Polyglot .bin opening book using lc0.
 The gist is that it simply runs lc0 in `go infinite` mode, periodically examines the tree, and writes an entry into the opening book for any position that has a sufficient number of visits to be considered sufficiently converged.
 
-Fork of: repo [here](https://github.com/petersn/lczero-book-maker) updated for new Lc0 engine backend.
+Fork of the repo [here](https://github.com/petersn/lczero-book-maker), updated for new Lc0 engine backend.
 
 ## Usage
 
 You must first apply a patch to lc0 that adds a UCI command `dumpnode` that book-maker.py uses to probe the tree.
-To do this, checkout the `dumpnode` branch of [my fork of leela-chess](https://github.com/bharadwaj6/lc0), and build lc0.
+To do this, checkout the `dumpnode` branch of [my fork of lc0](https://github.com/bharadwaj6/lc0), and build lc0.
 
 One you have that compiled you can invoke book-maker.py.
 The options are relatively obvious:
